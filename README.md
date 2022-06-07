@@ -4,7 +4,7 @@
 
 - [Description](#rock-paper-scissors-game)
 - [Features](#features)
-- [Bugs]9#bugs
+- [Bugs]#bugs
 - [Deployment](#deployment)
 - [Credits](#credits)
 
@@ -18,7 +18,7 @@
 - Go to [Heroku webpage](https://www.heroku.com/) and **log in**/**sign up**.
 - At the dashboard click on the **New** button -> **Create new app**.
 - Add a app name, choose the region, and click on **Create app** button.
-- On the **Settings** tab -> **Config Vars** section -> **Reveal Config Vars** add the KEY: PORT and VALUE: 8000.
+- On the **Settings** tab -> **Config Vars** section -> **Reveal Config Vars** add the KEY and VALUE nedded.
 - Bellow on the **Buildpacks** section -> **Add buildpack** button to add Python and Node.js to the list.
 - On the **Deploy** tab -> **Deployment method** section, choose GitHub.
 - Search for a repository to connect to on **Connect to GitHub** section and click **Conect**.
