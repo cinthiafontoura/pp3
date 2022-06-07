@@ -20,6 +20,5 @@ print("""
        __________)      The rock will beat scissors every time but will be
       (____)        beaten by paper. Paper will beat rock but will be beaten by
 ---.__(___)         scissors in no time.      
-   
                     
 """)  

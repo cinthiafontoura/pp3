@@ -4,7 +4,7 @@
 
 - [Description](#rock-paper-scissors-game)
 - [Features](#features)
-- [Bugs]#bugs
+- [Bugs](#bugs)
 - [Deployment](#deployment)
 - [Credits](#credits)
 
