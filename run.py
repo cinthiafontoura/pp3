@@ -52,7 +52,6 @@ scissors = '''
 ---.__(___)
 '''
 
-game_images = [rock, paper, scissors]
 
 def choose_move():
     """
@@ -81,13 +80,28 @@ def check_winner():
 
 
 def print_moves(player,choice):
+    """
+    Print the moves choices to the game
+    """
     print(f"\n{player} choose:")
     print(game_images[choice])
 
 
-moves = choose_move()
-user_choice = int(moves[0])
-print_user_choice = print_moves("YOU",user_choice)
-computer_choice = moves[1]
-print_computer_choice = print_moves("COMPUTER",computer_choice)
-is_the_winner = check_winner()        
+game_images = [rock, paper, scissors]
+game_round = 1
+
+while game_round <= 4:
+    if game_round <= 3:
+        print(f"\nRound: {game_round}")
+        moves = choose_move()
+        user_choice = int(moves[0])
+        computer_choice = moves[1]
+        print_user_choice = print_moves("YOU",user_choice)
+        print_computer_choice = print_moves("COMPUTER",computer_choice)   
+        is_the_winner = check_winner() 
+       
+        game_round += 1
+       
+    elif game_round > 3:
+        game_round += 1
+        print("the end")
