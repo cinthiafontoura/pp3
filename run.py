@@ -64,12 +64,6 @@ def choose_move():
 
     return user_move, computer_move
 
-moves = choose_move()
-user_choice = int(moves[0])
-print(f"YOU choose: {user_choice}")
-computer_choice = moves[1]
-print(f"The COMPUTER choose: {computer_choice}")
-
 
 def check_winner():
     """
@@ -77,13 +71,23 @@ def check_winner():
     """
     
     if user_choice == 0 and computer_choice == 2 or user_choice == 1 and computer_choice == 0 or user_choice == 2 and computer_choice == 1:
-        print("You WIN! =D")      
+        print("You WIN! =D\n")      
     elif user_choice == computer_choice:
-        print("It's a DRAW")
+        print("It's a DRAW\n")
     elif user_choice == 0 and computer_choice == 1 or user_choice == 1 and computer_choice == 2 or user_choice == 2 and computer_choice == 0:
-        print("You LOSE. =(") 
+        print("You LOSE. =(\n") 
     else:
         print("Something went wrong")    
 
 
+def print_moves(player,choice):
+    print(f"\n{player} choose:")
+    print(game_images[choice])
+
+
+moves = choose_move()
+user_choice = int(moves[0])
+print_user_choice = print_moves("YOU",user_choice)
+computer_choice = moves[1]
+print_computer_choice = print_moves("COMPUTER",computer_choice)
 is_the_winner = check_winner()        
