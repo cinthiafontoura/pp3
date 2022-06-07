@@ -1,6 +1,55 @@
+# Rock Paper Scissors Game
+
+## Table of Contents
+
+- [Description](#rock-paper-scissors-game)
+- [Features](#features)
+- [Bugs]9#bugs
+- [Deployment](#deployment)
+- [Credits](#credits)
+
+## Features
+
+## Bugs
+
+## Deployment
+
+- Create a repository using the [Code Institute template](https://github.com/cinthiafontoura/python-essentials-template) for Python command-line project.
+- Go to [Heroku webpage](https://www.heroku.com/) and **log in**/**sign up**.
+- At the dashboard click on the **New** button -> **Create new app**.
+- Add a app name, choose the region, and click on **Create app** button.
+- On the **Settings** tab -> **Config Vars** section -> **Reveal Config Vars** add the KEY: PORT and VALUE: 8000.
+- Bellow on the **Buildpacks** section -> **Add buildpack** button to add Python and Node.js to the list.
+- On the **Deploy** tab -> **Deployment method** section, choose GitHub.
+- Search for a repository to connect to on **Connect to GitHub** section and click **Conect**.
+- Choose a branch and click on **Deploy Branch** on **Manual deploy** section to finilyse the deployment.
+- After a few seconds, open the deployed app by clicking on **View** button.
+
+Live website at [Rock Paper Scissors Game](https://pp3-rock-paper-scissors.herokuapp.com/)
+
+## Credits
+
+- Project created using the [Code Institute template](https://github.com/cinthiafontoura/python-essentials-template) for Python command-line project.
+- Description text and rules from [World Rock Paper Scissors Association](https://wrpsa.com/) website.
+- ASCII art from [ASCII Art Archive](https://www.asciiart.eu/people/body-parts/hand-gestures) by Veronica Karlsson.
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
-Welcome USER_NAME,
+Welcome Cinthia Fontoura,
 
 This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
 
