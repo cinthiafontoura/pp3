@@ -65,6 +65,25 @@ def choose_move():
     return user_move, computer_move
 
 moves = choose_move()
-print(moves)
-print(f"YOU choose: {moves[0]}")
-print(f"The COMPUTER choose: {moves[1]}")
+user_choice = int(moves[0])
+print(f"YOU choose: {user_choice}")
+computer_choice = moves[1]
+print(f"The COMPUTER choose: {computer_choice}")
+
+
+def check_winner():
+    """
+    Check if the player win, lose or draw the round
+    """
+    
+    if user_choice == 0 and computer_choice == 2 or user_choice == 1 and computer_choice == 0 or user_choice == 2 and computer_choice == 1:
+        print("You WIN! =D")      
+    elif user_choice == computer_choice:
+        print("It's a DRAW")
+    elif user_choice == 0 and computer_choice == 1 or user_choice == 1 and computer_choice == 2 or user_choice == 2 and computer_choice == 0:
+        print("You LOSE. =(") 
+    else:
+        print("Something went wrong")    
+
+
+is_the_winner = check_winner()        
