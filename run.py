@@ -18,7 +18,7 @@ print("""                    WELCOME TO THE ROCK PAPER SCISSORS GAME!
     _______         * Paper wins against rock.
 ---'   ____)____        
           ______)       The rock will beat scissors every time but will be 
-       __________)  beaten by paper. Paper will beat rock but will be beaten by    
+       __________)  beaten by paper. Paper will beat rock but will be beaten by
       (____)        scissors in no time.
 ---.__(___)         
 """)  
@@ -51,9 +51,6 @@ scissors = '''
 ---.__(___)
 '''
 
-
-
-
 def choose_move():
     """
     Ask to the player choose between rock, paper, and scissors by enter a number. 
@@ -71,22 +68,18 @@ def check_round_winner():
     """
     user_points = 0
     computer_points = 0
-    result = ""
 
     if user_choice == 0 and computer_choice == 2 or user_choice == 1 and computer_choice == 0 or user_choice == 2 and computer_choice == 1:
-        result = "You WIN! =D\n"  
         user_points += 100   
     elif user_choice == computer_choice:
-        result = "It's a DRAW\n"
         user_points += 0
         computer_points += 0
     elif user_choice == 0 and computer_choice == 1 or user_choice == 1 and computer_choice == 2 or user_choice == 2 and computer_choice == 0:
-        result = "You LOSE. =(\n"
         computer_points += 100
     else:
-        result = "Something went wrong.\n"   
+        print("Something went wrong.\n")   
 
-    return user_points, computer_points, result
+    return user_points, computer_points
 
 def print_moves(player,choice):
     """
@@ -98,6 +91,9 @@ def print_moves(player,choice):
 
 
 def check_game_winner():
+    """
+    Check who win the game after the third round.
+    """
     if user_score > computer_score:
         return """
                     _______________
@@ -154,8 +150,7 @@ while game_round <= 4:
         print_moves("YOU",user_choice)
         computer_choice = moves[1]
         print_moves("COMPUTER",computer_choice)  
-
-        print(check_round_winner()[2])
+        check_round_winner()
         user_score += check_round_winner()[0]
         computer_score += check_round_winner()[1] 
 
@@ -165,6 +160,3 @@ while game_round <= 4:
     elif game_round > 3:
         game_round += 1
         print(check_game_winner())
-
-
-            
