@@ -12,7 +12,7 @@
 
 ## Bugs
 
-the enter needs validation
+No bugs unsolved!
 
 ## Deployment
 

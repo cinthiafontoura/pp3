@@ -24,18 +24,15 @@ print("""                    WELCOME TO THE ROCK PAPER SCISSORS GAME!
 """)  
 
 
-
-
-
 def choose_move():
     """
     Ask to the player choose between rock, paper, and scissors.
-    Create a random move to the computer.
     """
-    user_move = input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n")
-    computer_move = random.randint(0, 2)
+    return input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n")
 
-    return user_move, computer_move
+
+
+    
 
 
 def check_round_winner():
@@ -136,7 +133,27 @@ def check_game_winner():
                                                   
         """    
 
-    
+
+def validate_user_move():
+    """
+    Check if the user enter the correct input and print a feedback.
+    """
+    valid_enter = False
+    while valid_enter != True:
+        user_enter = choose_move()
+        if user_enter.isdigit():
+            if int(user_enter) >= 0 and int(user_enter) <= 2:
+                valid_enter = True              
+            else:
+                print(f"Ops! Wrong choice. You typed: {user_enter}.\n")                
+                continue
+        else:
+            print(f"You should enter a number.  You typed: {user_enter}.\n")
+            continue
+              
+    return int(user_enter)
+
+     
 game_round = 1
 user_score = 0
 computer_score = 0 
@@ -144,12 +161,14 @@ computer_score = 0
 while game_round <= 4:
     if game_round <= 3:
         
-        moves = choose_move()
+        user_move = validate_user_move()
+        
+        computer_move = random.randint(0, 2)
         print(f"\nROUND: {game_round}")
 
-        user_choice = int(moves[0])        
+        user_choice = user_move
         print_moves("YOU", user_choice)
-        computer_choice = moves[1]
+        computer_choice = computer_move
         print_moves("COMPUTER", computer_choice)  
         check_round_winner()
         user_score += check_round_winner()[0]
