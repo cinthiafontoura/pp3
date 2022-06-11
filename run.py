@@ -24,40 +24,16 @@ print("""                    WELCOME TO THE ROCK PAPER SCISSORS GAME!
 """)  
 
 
-rock = '''
-    _______
----'   ____)
-      (_____)
-      (_____)
-      (____)
----.__(___)
-'''
 
-paper = '''
-    _______
----'   ____)____
-          ______)
-          _______)
-         _______)
----.__________)
-'''
 
-scissors = '''
-    _______
----'   ____)____
-          ______)
-       __________)
-      (____)
----.__(___)
-'''
 
 def choose_move():
     """
-    Ask to the player choose between rock, paper, and scissors by enter a number. 
+    Ask to the player choose between rock, paper, and scissors.
     Create a random move to the computer.
     """
     user_move = input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n")
-    computer_move = random.randint(0,2)
+    computer_move = random.randint(0, 2)
 
     return user_move, computer_move
 
@@ -68,24 +44,49 @@ def check_round_winner():
     """
     user_points = 0
     computer_points = 0
-
     if user_choice == 0 and computer_choice == 2 or user_choice == 1 and computer_choice == 0 or user_choice == 2 and computer_choice == 1:
-        user_points += 100   
+        user_points += 100            
     elif user_choice == computer_choice:
         user_points += 0
         computer_points += 0
     elif user_choice == 0 and computer_choice == 1 or user_choice == 1 and computer_choice == 2 or user_choice == 2 and computer_choice == 0:
         computer_points += 100
     else:
-        print("Something went wrong.\n")   
+        print("Something went wrong.\n")
 
     return user_points, computer_points
 
-def print_moves(player,choice):
+
+def print_moves(player, choice):
     """
     Print the moves choices to the game
     """
-    game_images = [rock, paper, scissors]
+    game_images = ['''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+''',
+
+'''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+''',
+
+'''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+''']
     print(f"\n{player} choose:")
     print(game_images[choice])
 
@@ -147,9 +148,9 @@ while game_round <= 4:
         print(f"\nROUND: {game_round}")
 
         user_choice = int(moves[0])        
-        print_moves("YOU",user_choice)
+        print_moves("YOU", user_choice)
         computer_choice = moves[1]
-        print_moves("COMPUTER",computer_choice)  
+        print_moves("COMPUTER", computer_choice)  
         check_round_winner()
         user_score += check_round_winner()[0]
         computer_score += check_round_winner()[1] 
@@ -160,3 +161,5 @@ while game_round <= 4:
     elif game_round > 3:
         game_round += 1
         print(check_game_winner())
+
+        

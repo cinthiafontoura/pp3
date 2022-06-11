@@ -12,6 +12,8 @@
 
 ## Bugs
 
+the enter needs validation
+
 ## Deployment
 
 - Create a repository using the [Code Institute template](https://github.com/cinthiafontoura/python-essentials-template) for Python command-line project.
