@@ -110,22 +110,22 @@ def check_game_winner():
     """
     if user_score > computer_score:
         return """
-                    _______________
-                   |####|     |####|
-                   |####|     |####|
-                   |####|     |####|
-                   \####|     |####/
-                    \###|     |###/
-                     `##|_____|##'
-                          (O)
-                       .-'''''-.
-                     .'  * * *  `.
-                    :  *       *  :
-                   :  *  Y O U  *  :
-                   :  *  W I N   * :
-                    :  *       *  :
-                     `.  * * *  .'
-                       `-.....-'
+                        _______________
+                       |####|     |####|
+                       |####|     |####|
+                       |####|     |####|
+                       \####|     |####/
+                        \###|     |###/
+                         `##|_____|##'
+                              (O)
+                           .-'''''-.
+                         .'  * * *  `.
+                        :  *       *  :
+                       :  *  Y O U  *  :
+                       :  *  W I N   * :
+                        :  *       *  :
+                         `.  * * *  .'
+                           `-.....-'
         """
     elif user_score < computer_score:
         return """
@@ -141,41 +141,37 @@ def check_game_winner():
 
     else:
         return """
-         _                    _                           
-        | |__  _ __ ___  __ _| | __   _____   _____ _ __  
-        | '_ \| '__/ _ \/ _` | |/ /  / _ \ \ / / _ \ '_ \ 
-        | |_) | | |  __/ (_| |   <  |  __/\ V /  __/ | | |
-        |_.__/|_|  \___|\__,_|_|\_\  \___| \_/ \___|_| |_|
+             _                    _                           
+            | |__  _ __ ___  __ _| | __   _____   _____ _ __  
+            | '_ \| '__/ _ \/ _` | |/ /  / _ \ \ / / _ \ '_ \ 
+            | |_) | | |  __/ (_| |   <  |  __/\ V /  __/ | | |
+            |_.__/|_|  \___|\__,_|_|\_\  \___| \_/ \___|_| |_|
                                                   
-        """    
+        """ 
+    print('To play again hit the "RUN PROGRAM" button')
 
 
 game_round = 1
 user_score = 0
 computer_score = 0
-
 while game_round <= 4:
     if game_round <= 3:
-        
-        user_move = validate_user_move()
-        
+        user_move = validate_user_move()        
         computer_move = random.randint(0, 2)
         print(f"\nROUND: {game_round}")
-
         user_choice = user_move
-        print_moves("YOU", user_choice)
         computer_choice = computer_move
+        print_moves("YOU", user_choice)        
         print_moves("COMPUTER", computer_choice)
         check_round_winner()
         user_score += check_round_winner()[0]
         computer_score += check_round_winner()[1]
-
         print(f"YOU {user_score} x {computer_score} COMPUTER\n")
-        game_round += 1
-    
+        game_round += 1    
     elif game_round > 3:
         game_round += 1
-        time.sleep(1.5)
+        time.sleep(1)
         print(check_game_winner())
+        print('\nTo play again click on the "RUN PROGRAM" button.\n')
 
         
