@@ -2,7 +2,7 @@ import random
 import time
 
 print("""                    WELCOME TO THE ROCK PAPER SCISSORS GAME!
-    _______                 
+    _______
 ---'   ____)            This game is played by children and adults and is
       (_____)       popular all over the world. Apart from being a game played
       (_____)       to pass time, the game is usually played in situations
@@ -12,17 +12,17 @@ print("""                    WELCOME TO THE ROCK PAPER SCISSORS GAME!
     _______         knowing what the other person is going to do so the results
 ---'   ____)____    are usually very satisfying with no room for fighting or
           ______)   error. WIN the best of the 3 rounds!
-          _______)                         
+          _______)
          _______)                           RULES
 ---.__________)     * Rock wins against scissors.
                     * Scissors win against paper.
     _______         * Paper wins against rock.
----'   ____)____        
+---'   ____)____
           ______)       The rock will beat scissors every time but will be
        __________)  beaten by paper. Paper will beat rock but will be beaten by
       (____)        scissors in no time.
----.__(___)         
-""")  
+---.__(___)
+""")
 
 
 def choose_move():
@@ -37,18 +37,18 @@ def validate_user_move():
     Check if the user enter the correct input and print a feedback.
     """
     valid_enter = False
-    while valid_enter != True:
+    while valid_enter is not True:
         user_enter = choose_move()
         if user_enter.isdigit():
             if int(user_enter) >= 0 and int(user_enter) <= 2:
-                valid_enter = True              
+                valid_enter = True
             else:
-                print(f"Ops! Wrong choice. You typed: {user_enter}.\n")                
+                print(f"Ops! Wrong choice. You typed: {user_enter}.\n")
                 continue
         else:
             print(f"You should enter a number.  You typed: {user_enter}.\n")
-            continue              
-    return int(user_enter)    
+            continue
+    return int(user_enter)
 
 
 def check_round_winner():
@@ -58,12 +58,12 @@ def check_round_winner():
     user_points = 0
     computer_points = 0
     if user_choice == 0 and computer_choice == 2 or user_choice == 1 and computer_choice == 0 or user_choice == 2 and computer_choice == 1:
-        user_points += 100            
+        user_points += 1
     elif user_choice == computer_choice:
         user_points += 0
         computer_points += 0
     elif user_choice == 0 and computer_choice == 1 or user_choice == 1 and computer_choice == 2 or user_choice == 2 and computer_choice == 0:
-        computer_points += 100
+        computer_points += 1
     else:
         print("Something went wrong.\n")
     return user_points, computer_points
@@ -131,7 +131,7 @@ def check_game_winner():
 
 
 
-    ██████╗  █████╗ ███╗   ███╗███████╗     ██████╗ ██╗   ██╗███████╗██████╗ 
+    ██████╗  █████╗ ███╗   ███╗███████╗     ██████╗ ██╗   ██╗███████╗██████╗
    ██╔════╝ ██╔══██╗████╗ ████║██╔════╝    ██╔═══██╗██║   ██║██╔════╝██╔══██╗
    ██║  ███╗███████║██╔████╔██║█████╗      ██║   ██║██║   ██║█████╗  ██████╔╝
    ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝      ██║   ██║╚██╗ ██╔╝██╔══╝  ██╔══██╗
@@ -141,8 +141,8 @@ def check_game_winner():
 
 
 
-                                                                        
-        """    
+
+        """
 
     else:
         return """
@@ -150,9 +150,9 @@ def check_game_winner():
 
 
 
-                 _                    _                           
-                | |__  _ __ ___  __ _| | __   _____   _____ _ __  
-                | '_ \| '__/ _ \/ _` | |/ /  / _ \ \ / / _ \ '_ \ 
+                 _                    _
+                | |__  _ __ ___  __ _| | __   _____   _____ _ __
+                | '_ \| '__/ _ \/ _` | |/ /  / _ \ \ / / _ \ '_ \
                 | |_) | | |  __/ (_| |   <  |  __/\ V /  __/ | | |
                 |_.__/|_|  \___|\__,_|_|\_\  \___| \_/ \___|_| |_|
 
@@ -161,7 +161,7 @@ def check_game_winner():
 
 
 
-        """ 
+        """
     print('To play again hit the "RUN PROGRAM" button')
 
 
@@ -170,12 +170,12 @@ user_score = 0
 computer_score = 0
 while game_round <= 4:
     if game_round <= 3:
-        user_move = validate_user_move()        
+        user_move = validate_user_move()
         computer_move = random.randint(0, 2)
         print(f"ROUND: {game_round}\n")
         user_choice = user_move
         computer_choice = computer_move
-        print_moves("YOU", user_choice)        
+        print_moves("YOU", user_choice)
         print_moves("COMPUTER", computer_choice)
         check_round_winner()
         user_score += check_round_winner()[0]
@@ -187,5 +187,3 @@ while game_round <= 4:
         time.sleep(1.3)
         print(check_game_winner())
         print('\nTo play again click on the "RUN PROGRAM" button.\n')
-
-        
