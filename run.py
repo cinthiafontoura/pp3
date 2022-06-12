@@ -108,7 +108,7 @@ def check_game_winner():
     Check who win the game after the third round.
     """
     if user_score > computer_score:
-        return """           _______________
+        return """                             _______________
                             |####|     |####|
                             |####|     |####|
                             |####|     |####|
@@ -181,10 +181,10 @@ while game_round <= 4:
         user_score += check_round_winner()[0]
         computer_score += check_round_winner()[1]
         print(f"YOU {user_score} x {computer_score} COMPUTER\n")
-        game_round += 1    
+        game_round += 1
     elif game_round > 3:
         game_round += 1
-        time.sleep(1)
+        time.sleep(1.3)
         print(check_game_winner())
         print('\nTo play again click on the "RUN PROGRAM" button.\n')
 
