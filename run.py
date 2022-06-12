@@ -1,4 +1,5 @@
 import random
+import time
 
 print("""                    WELCOME TO THE ROCK PAPER SCISSORS GAME!
     _______                 
@@ -6,18 +7,18 @@ print("""                    WELCOME TO THE ROCK PAPER SCISSORS GAME!
       (_____)       popular all over the world. Apart from being a game played
       (_____)       to pass time, the game is usually played in situations
       (____)        where something has to be chosen. It is similar in that way
----.__(___)         to other games like flipping the coin, throwing dice or 
+---.__(___)         to other games like flipping the coin, throwing dice or
                     drawing straws. There is no room for cheating or for
     _______         knowing what the other person is going to do so the results
----'   ____)____    are usually very satisfying with no room for fighting or 
+---'   ____)____    are usually very satisfying with no room for fighting or
           ______)   error. WIN the best of the 3 rounds!
           _______)                         
          _______)                           RULES
 ---.__________)     * Rock wins against scissors.
-                    * Scissors win against paper. 
+                    * Scissors win against paper.
     _______         * Paper wins against rock.
 ---'   ____)____        
-          ______)       The rock will beat scissors every time but will be 
+          ______)       The rock will beat scissors every time but will be
        __________)  beaten by paper. Paper will beat rock but will be beaten by
       (____)        scissors in no time.
 ---.__(___)         
@@ -31,8 +32,23 @@ def choose_move():
     return input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n")
 
 
-
-    
+def validate_user_move():
+    """
+    Check if the user enter the correct input and print a feedback.
+    """
+    valid_enter = False
+    while valid_enter != True:
+        user_enter = choose_move()
+        if user_enter.isdigit():
+            if int(user_enter) >= 0 and int(user_enter) <= 2:
+                valid_enter = True              
+            else:
+                print(f"Ops! Wrong choice. You typed: {user_enter}.\n")                
+                continue
+        else:
+            print(f"You should enter a number.  You typed: {user_enter}.\n")
+            continue              
+    return int(user_enter)    
 
 
 def check_round_winner():
@@ -134,29 +150,9 @@ def check_game_winner():
         """    
 
 
-def validate_user_move():
-    """
-    Check if the user enter the correct input and print a feedback.
-    """
-    valid_enter = False
-    while valid_enter != True:
-        user_enter = choose_move()
-        if user_enter.isdigit():
-            if int(user_enter) >= 0 and int(user_enter) <= 2:
-                valid_enter = True              
-            else:
-                print(f"Ops! Wrong choice. You typed: {user_enter}.\n")                
-                continue
-        else:
-            print(f"You should enter a number.  You typed: {user_enter}.\n")
-            continue
-              
-    return int(user_enter)
-
-     
 game_round = 1
 user_score = 0
-computer_score = 0 
+computer_score = 0
 
 while game_round <= 4:
     if game_round <= 3:
@@ -169,16 +165,17 @@ while game_round <= 4:
         user_choice = user_move
         print_moves("YOU", user_choice)
         computer_choice = computer_move
-        print_moves("COMPUTER", computer_choice)  
+        print_moves("COMPUTER", computer_choice)
         check_round_winner()
         user_score += check_round_winner()[0]
-        computer_score += check_round_winner()[1] 
+        computer_score += check_round_winner()[1]
 
-        print(f"YOU {user_score} x {computer_score} COMPUTER\n")                                                
+        print(f"YOU {user_score} x {computer_score} COMPUTER\n")
         game_round += 1
     
     elif game_round > 3:
         game_round += 1
+        time.sleep(1.5)
         print(check_game_winner())
 
         
