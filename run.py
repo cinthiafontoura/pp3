@@ -100,7 +100,7 @@ def print_moves(player, choice):
       (____)
 ---.__(___)
 ''']
-    print(f"\n{player} choose:")
+    print(f"{player} choose:")
     print(game_images[choice])
 
 
@@ -158,7 +158,7 @@ while game_round <= 4:
     if game_round <= 3:
         user_move = validate_user_move()        
         computer_move = random.randint(0, 2)
-        print(f"\nROUND: {game_round}")
+        print(f"ROUND: {game_round}")
         user_choice = user_move
         computer_choice = computer_move
         print_moves("YOU", user_choice)        
