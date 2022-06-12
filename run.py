@@ -29,7 +29,8 @@ def choose_move():
     """
     Ask to the player choose between rock, paper, and scissors.
     """
-    return input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n")
+    return input("What do you choose?\
+ Type 0 for Rock, 1 for Paper or 2 for Scissors.\n")
 
 
 def validate_user_move():
@@ -57,13 +58,17 @@ def check_round_winner():
     """
     user_points = 0
     computer_points = 0
-    if user_choice == 0 and computer_choice == 2 or user_choice == 1 and computer_choice == 0 or user_choice == 2 and computer_choice == 1:
-        user_points += 1
-    elif user_choice == computer_choice:
-        user_points += 0
-        computer_points += 0
-    elif user_choice == 0 and computer_choice == 1 or user_choice == 1 and computer_choice == 2 or user_choice == 2 and computer_choice == 0:
-        computer_points += 1
+    if user_move == computer_move:
+        user_points += 50
+        computer_points += 50
+    elif user_move == 0 and computer_move == 2:
+        user_points += 100
+    elif user_move == 2 and computer_move == 0:
+        computer_points += 100
+    elif user_move < computer_move:
+        computer_points += 100
+    elif user_move > computer_move:
+        user_points += 100
     else:
         print("Something went wrong.\n")
     return user_points, computer_points
@@ -80,18 +85,14 @@ def print_moves(player, choice):
       (_____)
       (____)
 ---.__(___)
-''',
-
-'''
+''', '''
     _______
 ---'   ____)____
           ______)
           _______)
          _______)
 ---.__________)
-''',
-
-'''
+''', '''
     _______
 ---'   ____)____
           ______)
@@ -108,7 +109,8 @@ def check_game_winner():
     Check who win the game after the third round.
     """
     if user_score > computer_score:
-        return """                             _______________
+        return """
+                             _______________
                             |####|     |####|
                             |####|     |####|
                             |####|     |####|
@@ -152,7 +154,7 @@ def check_game_winner():
 
                  _                    _
                 | |__  _ __ ___  __ _| | __   _____   _____ _ __
-                | '_ \| '__/ _ \/ _` | |/ /  / _ \ \ / / _ \ '_ \
+                | '_ \| '__/ _ \/ _` | |/ /  / _ \ \ / / _ \ '_ \\
                 | |_) | | |  __/ (_| |   <  |  __/\ V /  __/ | | |
                 |_.__/|_|  \___|\__,_|_|\_\  \___| \_/ \___|_| |_|
 
@@ -162,28 +164,28 @@ def check_game_winner():
 
 
         """
-    print('To play again hit the "RUN PROGRAM" button')
 
-
+# The game
 game_round = 1
 user_score = 0
 computer_score = 0
 while game_round <= 4:
     if game_round <= 3:
+        # Take user and computer choices
         user_move = validate_user_move()
         computer_move = random.randint(0, 2)
         print(f"ROUND: {game_round}\n")
-        user_choice = user_move
-        computer_choice = computer_move
-        print_moves("YOU", user_choice)
-        print_moves("COMPUTER", computer_choice)
-        check_round_winner()
+        # Print choices images
+        print_moves("YOU", user_move)
+        print_moves("COMPUTER", computer_move)
+        # Increase one point to the round winner
         user_score += check_round_winner()[0]
         computer_score += check_round_winner()[1]
         print(f"YOU {user_score} x {computer_score} COMPUTER\n")
         game_round += 1
     elif game_round > 3:
         game_round += 1
+        # Print the game result after a delay
         time.sleep(1.3)
         print(check_game_winner())
         print('\nTo play again click on the "RUN PROGRAM" button.\n')
