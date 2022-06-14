@@ -1,5 +1,7 @@
 # Rock Paper Scissors Game
 
+![full-layout](https://user-images.githubusercontent.com/80278757/173707581-190bdfc4-2a38-4eab-a8c0-0b822f9cb41b.png)
+
 ## Table of Contents
 
 - [Description](#rock-paper-scissors-game)
@@ -9,6 +11,10 @@
 - [Credits](#credits)
 
 ## Features
+![playing](https://user-images.githubusercontent.com/80278757/173707616-60528de5-6881-40b7-a8d8-86ba14dd9d0e.png)
+![validation-leter](https://user-images.githubusercontent.com/80278757/173707619-068327e3-7b19-49c2-a1e9-0c921ae0938d.png)
+![validation-number](https://user-images.githubusercontent.com/80278757/173707620-d96c7efc-5fcd-449c-8403-ac7e34d2ec48.png)
+![result](https://user-images.githubusercontent.com/80278757/173707957-5cd90c8f-79d6-48f5-a27a-7414cb1d2268.png)
 
 ## Bugs
 
