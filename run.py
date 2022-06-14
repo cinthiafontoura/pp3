@@ -1,5 +1,6 @@
 import random
 import time
+import os
 
 print("""                    WELCOME TO THE ROCK PAPER SCISSORS GAME!
     _______
@@ -106,7 +107,7 @@ def print_moves(player, choice):
 def check_game_winner():
     """
     Check who win the game after the third round.
-    """
+    """    
     if user_score > computer_score:
         return """
                              _______________
@@ -167,15 +168,22 @@ def check_game_winner():
 
         """
 
+
+def clear_terminal():
+    os.system('cls')  # on windows
+    os.system('clear')  # on linux / os x
+
+
 # The game
 game_round = 1
 user_score = 0
 computer_score = 0
 while game_round <= 4:
     if game_round <= 3:
-        # Take user and computer choices
+        # Take user and computer choices        
         user_move = validate_user_move()
         computer_move = random.randint(0, 2)
+        clear_terminal()
         print(f"ROUND: {game_round}\n")
         # Print choices images
         print_moves("YOU", user_move)
@@ -189,4 +197,5 @@ while game_round <= 4:
         game_round += 1
         # Print the game result after a delay
         time.sleep(1.3)
+        clear_terminal()
         print(check_game_winner())
