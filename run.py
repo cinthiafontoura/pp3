@@ -29,8 +29,7 @@ def choose_move():
     """
     Ask to the player choose between rock, paper, and scissors.
     """
-    return input("What do you choose?\
- Type 0 for Rock, 1 for Paper or 2 for Scissors.\n")
+    return input("Type 0 for Rock, 1 for Paper or 2 for Scissors.\n")
 
 
 def validate_user_move():
@@ -126,9 +125,11 @@ def check_game_winner():
                              :  *       *  :
                               `.  * * *  .'
                                 `-.....-'
+                                
         """
     elif user_score < computer_score:
         return """
+
 
 
 
@@ -148,6 +149,7 @@ def check_game_winner():
 
     else:
         return """
+
 
 
 
@@ -188,4 +190,3 @@ while game_round <= 4:
         # Print the game result after a delay
         time.sleep(1.3)
         print(check_game_winner())
-        print('\nTo play again click on the "RUN PROGRAM" button.\n')
