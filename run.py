@@ -110,6 +110,11 @@ def check_game_winner():
     """    
     if user_score > computer_score:
         return """
+                        
+                        
+                        
+                        
+                        
                              _______________
                             |####|     |####|
                             |####|     |####|
@@ -135,6 +140,11 @@ def check_game_winner():
 
 
 
+
+
+
+
+
     ██████╗  █████╗ ███╗   ███╗███████╗     ██████╗ ██╗   ██╗███████╗██████╗
    ██╔════╝ ██╔══██╗████╗ ████║██╔════╝    ██╔═══██╗██║   ██║██╔════╝██╔══██╗
    ██║  ███╗███████║██╔████╔██║█████╗      ██║   ██║██║   ██║█████╗  ██████╔╝
@@ -150,6 +160,11 @@ def check_game_winner():
 
     else:
         return """
+
+
+
+
+
 
 
 
@@ -196,6 +211,6 @@ while game_round <= 4:
     elif game_round > 3:
         game_round += 1
         # Print the game result after a delay
-        time.sleep(1.3)
+        time.sleep(1.5)
         clear_terminal()
         print(check_game_winner())
