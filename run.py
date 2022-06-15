@@ -3,6 +3,7 @@ from google.oauth2.service_account import Credentials
 import random
 import time
 import os
+from pprint import pprint
 
 
 SCOPE = [
@@ -16,9 +17,24 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('rock_paper_scissors')
 
-scores = SHEET.worksheet("scores")
-data = scores.get_all_values()
-print(data)
+
+def get_last_6_scores():
+    """
+    Collecting the last 6 scores on the worksheet.
+    """
+    #Code by Anne G. in the Love Sandwiches tutorial
+    scores = SHEET.worksheet("scores")
+    
+    columns = []
+    for i in range(1,3):
+        column = scores.col_values(i)
+        columns.append(column[-6:])
+
+    pprint(columns) 
+
+
+
+get_last_6_scores()
 
 
 print("""                    WELCOME TO THE ROCK PAPER SCISSORS GAME!
@@ -49,7 +65,7 @@ def choose_move():
     """
     Ask to the player choose between rock, paper, and scissors.
     """
-    return input("Type 0 for Rock, 1 for Paper or 2 for Scissors.\n")
+    return input(f"{username}, type 0 for Rock, 1 for Paper or 2 for Scissors.\n")
 
 
 def validate_user_move():
@@ -203,6 +219,8 @@ def clear_terminal():
 
 
 # The game
+username = input("Enter your name:\n").upper()
+print(username)
 game_round = 1
 user_score = 0
 computer_score = 0
@@ -219,11 +237,18 @@ while game_round <= 4:
         # Increase one point to the round winner
         user_score += check_round_winner()[0]
         computer_score += check_round_winner()[1]
-        print(f"YOU {user_score} x {computer_score} COMPUTER\n")
+        print(f"{username} {user_score} x {computer_score} COMPUTER\n")
         game_round += 1
     elif game_round > 3:
         game_round += 1
         # Print the game result after a delay
         time.sleep(1.5)
         clear_terminal()
+
+        data = [username, user_score]
+        score_data = [i for i in data]
+        worksheet_to_update = SHEET.worksheet("scores")
+        worksheet_to_update.append_row(score_data)
+        pprint(worksheet_to_update)
+
         print(check_game_winner())
