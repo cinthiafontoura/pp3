@@ -114,7 +114,7 @@ def print_moves(player, choice):
     """
     Print the moves choices to the game
     """
-    game_images = ['''
+    GAME_IMAGES = ['''
     _______
 ---'   ____)
       (_____)
@@ -137,7 +137,7 @@ def print_moves(player, choice):
 ---.__(___)
 ''']
     print(f"{player} choose:")
-    print(game_images[choice])
+    print(GAME_IMAGES[choice])
 
 
 def check_game_winner():
