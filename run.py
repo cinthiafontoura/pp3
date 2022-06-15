@@ -28,13 +28,14 @@ def get_last_6_scores():
     columns = []
     for i in range(1,3):
         column = scores.col_values(i)
-        columns.append(column[-6:])
-
-    pprint(columns) 
+        columns.append(column[-6])
 
 
+    print(columns) 
 
-get_last_6_scores()
+
+
+
 
 
 print("""                    WELCOME TO THE ROCK PAPER SCISSORS GAME!
@@ -65,7 +66,7 @@ def choose_move():
     """
     Ask to the player choose between rock, paper, and scissors.
     """
-    return input(f"{username}, type 0 for Rock, 1 for Paper or 2 for Scissors.\n")
+    return input("Type 0 for Rock, 1 for Paper or 2 for Scissors.\n")
 
 
 def validate_user_move():
@@ -220,7 +221,6 @@ def clear_terminal():
 
 # The game
 username = input("Enter your name:\n").upper()
-print(username)
 game_round = 1
 user_score = 0
 computer_score = 0
@@ -245,10 +245,12 @@ while game_round <= 4:
         time.sleep(1.5)
         clear_terminal()
 
+        #add new score to the worksheet
         data = [username, user_score]
         score_data = [i for i in data]
         worksheet_to_update = SHEET.worksheet("scores")
         worksheet_to_update.append_row(score_data)
-        pprint(worksheet_to_update)
+        get_last_6_scores()
 
+        print(f"{username} {user_score} x {computer_score} COMPUTER\n")
         print(check_game_winner())
