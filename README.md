@@ -40,7 +40,7 @@ Live website at [Rock Paper Scissors Game](https://pp3-rock-paper-scissors.herok
 - Project created using the [Code Institute template](https://github.com/cinthiafontoura/python-essentials-template) for Python command-line project.
 - Description text and rules from [World Rock Paper Scissors Association](https://wrpsa.com/) website.
 - ASCII art from [ASCII Art Archive](https://www.asciiart.eu) and [patorjk](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20).
-
+- Clear screen code from [Stack Overflow](https://stackoverflow.com/questions/4810537/how-to-clear-the-screen-in-python)
 
 
 <br>

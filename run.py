@@ -3,7 +3,7 @@ from google.oauth2.service_account import Credentials
 import random
 import time
 import os
-from pprint import pprint
+import pprint
 
 
 SCOPE = [
@@ -16,22 +16,6 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('rock_paper_scissors')
-
-
-def get_last_6_scores():
-    """
-    Collecting the last 6 scores on the worksheet.
-    """
-    #Code by Anne G. in the Love Sandwiches tutorial
-    scores = SHEET.worksheet("scores")
-    
-    columns = []
-    for i in range(1,3):
-        column = scores.col_values(i)
-        columns.append(column[-6])
-
-
-    print(columns) 
 
 
 
@@ -144,9 +128,7 @@ def check_game_winner():
     """
     Check who win the game after the third round.
     """    
-    if user_score > computer_score:
-        print(f"CONGRATULATIONS {username}! Your socore is {user_score} points\
-        against {computer_score} points of the computer.")
+    if user_score > computer_score:        
         print( """
 
                              _______________
@@ -167,9 +149,9 @@ def check_game_winner():
                                 `-.....-'
            
         """)
+        print(f"CONGRATULATIONS {username}! Your socore is {user_score} points \
+against {computer_score} points of the computer.\n")
     elif user_score < computer_score:
-        print(f"Such a pity! Your socore is {user_score} points\
-        against {computer_score} points of the computer.")
         print("""
 
 
@@ -182,10 +164,9 @@ def check_game_winner():
 
 
         """)
-
+        print(f"Such a pity! Your socore is {user_score} points \
+against {computer_score} points of the computer.\n")
     else:
-        print(f"You think same as a computer {username} haha! Your socore is {user_score} points\
-        against {computer_score} points of the computer.")
         print("""
 
                  _                    _
@@ -196,11 +177,27 @@ def check_game_winner():
 
 
         """)
+        print(f"You can solve this playing again! Your socore is \
+{user_score} points against {computer_score} points of the computer.")
 
 
 def clear_terminal():
     os.system('cls')  # on windows
     os.system('clear')  # on linux / os x
+
+
+def get_last_6_scores():
+    """
+    Collecting the last 6 scores on the worksheet.
+    """
+    #Code by Anne G. in the Love Sandwiches tutorial
+    scores = SHEET.worksheet("scores")
+    
+    columns = []
+    for i in range(1,3):
+        column = scores.col_values(i)
+        columns.append(column[-6:])
+    return columns
 
 
 # The game
@@ -234,8 +231,19 @@ while game_round <= 4:
         score_data = [i for i in data]
         worksheet_to_update = SHEET.worksheet("scores")
         worksheet_to_update.append_row(score_data)
-        get_last_6_scores()
+        
+        names = get_last_6_scores()[0]
+        points = get_last_6_scores()[1]
 
-        print(f"{username} {user_score} x {computer_score} COMPUTER\n")
         check_game_winner()
+
+        print("\n     LATEST SCORES  \n")
+        print(f"--> {points[-1]} - {names[-1]} <--")
+        print(f"    {points[-2]} - {names[-2]}")
+        print(f"    {points[-3]} - {names[-3]}")
+        print(f"    {points[-4]} - {names[-4]}")
+        print(f"    {points[-5]} - {names[-5]}")
+        print(f"    {points[-6]} - {names[-6]}")
+
+        
         print("\nTo play again, hit the RUN PROGRAM button.")
