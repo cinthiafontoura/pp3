@@ -145,10 +145,10 @@ def check_game_winner():
     Check who win the game after the third round.
     """    
     if user_score > computer_score:
-        return """
-                                        
-                        
-                        
+        print(f"CONGRATULATIONS {username}! Your socore is {user_score} points\
+        against {computer_score} points of the computer.")
+        print( """
+
                              _______________
                             |####|     |####|
                             |####|     |####|
@@ -165,16 +165,12 @@ def check_game_winner():
                              :  *       *  :
                               `.  * * *  .'
                                 `-.....-'
-                                
-        """
+           
+        """)
     elif user_score < computer_score:
-        return """
-
-
-
-
-
-
+        print(f"Such a pity! Your socore is {user_score} points\
+        against {computer_score} points of the computer.")
+        print("""
 
 
     ██████╗  █████╗ ███╗   ███╗███████╗     ██████╗ ██╗   ██╗███████╗██████╗
@@ -185,20 +181,12 @@ def check_game_winner():
     ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝     ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝
 
 
-
-
-
-        """
+        """)
 
     else:
-        return """
-
-
-
-
-
-
-
+        print(f"You think same as a computer {username} haha! Your socore is {user_score} points\
+        against {computer_score} points of the computer.")
+        print("""
 
                  _                    _
                 | |__  _ __ ___  __ _| | __   _____   _____ _ __
@@ -207,11 +195,7 @@ def check_game_winner():
                 |_.__/|_|  \___|\__,_|_|\_\  \___| \_/ \___|_| |_|
 
 
-
-
-
-
-        """
+        """)
 
 
 def clear_terminal():
@@ -253,5 +237,5 @@ while game_round <= 4:
         get_last_6_scores()
 
         print(f"{username} {user_score} x {computer_score} COMPUTER\n")
-        print(check_game_winner())
-        print("\nTo play again, hit the PLAY GAME button.")
+        check_game_winner()
+        print("\nTo play again, hit the RUN PROGRAM button.")
