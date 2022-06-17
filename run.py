@@ -40,6 +40,8 @@ print("""                    WELCOME TO THE ROCK PAPER SCISSORS GAME!
       (____)        scissors in no time.
 ---.__(___)
 """)
+
+
 def validate_username():
     """
     Check if the user enter a name with no nubers.
@@ -50,18 +52,19 @@ def validate_username():
         if name == " " or name.isdigit():
             print("Please enter a valid name.\n")
             continue
-        elif name.isalpha() == False:
+        elif name.isalpha() is False:
             print("Please enter a valid name that contains only letters.\n")
             continue
         else:
             valid_enter = True
     return name
 
+
 def choose_move():
     """
     Ask to the player choose between rock, paper, and scissors.
     """
-    return input("Type 0 for Rock, 1 for Paper or 2 for Scissors, and press \
+    return input("Type 1 for Rock, 2 for Paper or 3 for Scissors, and press \
 enter.\n")
 
 
@@ -73,7 +76,7 @@ def validate_user_move():
     while valid_enter is not True:
         user_enter = choose_move()
         if user_enter.isdigit():
-            if int(user_enter) >= 0 and int(user_enter) <= 2:
+            if int(user_enter) >= 1 and int(user_enter) <= 3:
                 valid_enter = True
             else:
                 print(f"Ops! Wrong choice. You typed: {user_enter}.\n")
@@ -93,9 +96,9 @@ def check_round_winner():
     if user_move == computer_move:
         user_points += 50
         computer_points += 50
-    elif user_move == 0 and computer_move == 2:
+    elif user_move == 1 and computer_move == 3:
         user_points += 100
-    elif user_move == 2 and computer_move == 0:
+    elif user_move == 3 and computer_move == 1:
         computer_points += 100
     elif user_move < computer_move:
         computer_points += 100
@@ -133,7 +136,7 @@ def print_moves(player, choice):
 ---.__(___)
 ''']
     print(f"{player} choose:")
-    print(GAME_IMAGES[choice])
+    print(GAME_IMAGES[choice - 1])
 
 
 def check_game_winner():
