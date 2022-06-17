@@ -227,10 +227,8 @@ def get_last_6_scores():
     points = columns[1]
     latest_scores = {names[i]: points[i] for i in range(len(names))}
     for key, value in latest_scores.items():
-        txt = "{:>37}  -  {:<37}"
-        print("{:*^80}\n".format(" LATEST SCORES "))
-        print(txt.format(value, key))
-        print("\n{:*^80}\n".format(""))
+        txt = "{:>37}  -  {:<37}"        
+        print(txt.format(value, key))        
 
 
 # The game
@@ -261,5 +259,7 @@ while game_round <= 4:
         print("\nLatest scores...")
         time.sleep(2.5)
         clear_terminal()
+        print("{:*^80}\n".format(" LATEST SCORES "))
         get_last_6_scores()
+        print("\n{:*^80}\n".format(""))
         print("\nTo play again, hit the RUN PROGRAM button.")
