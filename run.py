@@ -40,7 +40,22 @@ print("""                    WELCOME TO THE ROCK PAPER SCISSORS GAME!
       (____)        scissors in no time.
 ---.__(___)
 """)
-
+def validate_username():
+    """
+    Check if the user enter a name with no nubers.
+    """
+    valid_enter = False
+    while valid_enter is not True:
+        name = input("Enter your first name:\n").upper()
+        if name == " " or name.isdigit():
+            print("Please enter a valid name.\n")
+            continue
+        elif name.isalpha() == False:
+            print("Please enter a valid name that contains only letters.\n")
+            continue
+        else:
+            valid_enter = True
+    return name
 
 def choose_move():
     """
@@ -52,7 +67,7 @@ enter.\n")
 
 def validate_user_move():
     """
-    Check if the user enter the correct input and print a feedback.
+    Check if the user enter the correct input and if negative print a feedback.
     """
     valid_enter = False
     while valid_enter is not True:
@@ -205,7 +220,7 @@ def get_last_6_scores():
 
 
 # The game
-username = input("Enter your name:\n").upper()
+username = validate_username()
 game_round = 1
 user_score = 0
 computer_score = 0
@@ -227,7 +242,7 @@ while game_round <= 4:
     elif game_round > 3:
         game_round += 1
         # Print the game result after a delay
-        print("Game result...")
+        print("\nGame result...")
         time.sleep(2.5)
         clear_terminal()
 
@@ -238,7 +253,7 @@ while game_round <= 4:
         worksheet_to_update.append_row(score_data)
 
         check_game_winner()
-        print("Latest scores...")
+        print("\nLatest scores...")
         time.sleep(2.5)
         clear_terminal()
         print("{:*^80}\n".format(" LATEST SCORES "))
