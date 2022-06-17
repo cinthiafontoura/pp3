@@ -243,7 +243,6 @@ while game_round <= 4:
         clear_terminal()
         print(f"ROUND: {game_round}\n")
         print_moves("YOU", user_move)
-        print(computer_move)
         print_moves("COMPUTER", computer_move)
         user_score += check_round_winner()[0]
         computer_score += check_round_winner()[1]
