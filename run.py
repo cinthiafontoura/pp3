@@ -3,7 +3,7 @@ from google.oauth2.service_account import Credentials
 import random
 import time
 import os
-import pprint
+from pprint import pprint
 
 
 SCOPE = [
@@ -16,10 +16,6 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('rock_paper_scissors')
-
-
-
-
 
 
 print("""                    WELCOME TO THE ROCK PAPER SCISSORS GAME!
@@ -50,7 +46,8 @@ def choose_move():
     """
     Ask to the player choose between rock, paper, and scissors.
     """
-    return input("Type 0 for Rock, 1 for Paper or 2 for Scissors, and press enter.\n")
+    return input("Type 0 for Rock, 1 for Paper or 2 for Scissors, and press \
+enter.\n")
 
 
 def validate_user_move():
@@ -127,9 +124,9 @@ def print_moves(player, choice):
 def check_game_winner():
     """
     Check who win the game after the third round.
-    """    
-    if user_score > computer_score:        
-        print( """
+    """
+    if user_score > computer_score:
+        print("""
 
                              _______________
                             |####|     |####|
@@ -147,7 +144,7 @@ def check_game_winner():
                              :  *       *  :
                               `.  * * *  .'
                                 `-.....-'
-           
+
         """)
         print(f"CONGRATULATIONS {username}! Your socore is {user_score} points \
 against {computer_score} points of the computer.\n")
@@ -188,16 +185,23 @@ def clear_terminal():
 
 def get_last_6_scores():
     """
-    Collecting the last 6 scores on the worksheet.
+    Collecting the last 6 scores on the worksheet and print it.
     """
-    #Code by Anne G. in the Love Sandwiches tutorial
+    # Code from Love Sandwiches tutorial
     scores = SHEET.worksheet("scores")
-    
+
     columns = []
-    for i in range(1,3):
+    for i in range(1, 3):
         column = scores.col_values(i)
         columns.append(column[-6:])
-    return columns
+
+    # Create a dict and print all values like a table
+    names = columns[0]
+    points = columns[1]
+    latest_scores = {names[i]: points[i] for i in range(len(names))}
+    for key, value in latest_scores.items():
+        txt = "{:>37}  -  {:<37}"
+        print(txt.format(value, key))
 
 
 # The game
@@ -207,7 +211,7 @@ user_score = 0
 computer_score = 0
 while game_round <= 4:
     if game_round <= 3:
-        # Take user and computer choices        
+        # Take user and computer choices
         user_move = validate_user_move()
         computer_move = random.randint(0, 2)
         clear_terminal()
@@ -223,27 +227,20 @@ while game_round <= 4:
     elif game_round > 3:
         game_round += 1
         # Print the game result after a delay
-        time.sleep(1.5)
+        print("Game result...")
+        time.sleep(2.5)
         clear_terminal()
 
-        #add new score to the worksheet
+        # Add new score to the worksheet
         data = [username, user_score]
         score_data = [i for i in data]
         worksheet_to_update = SHEET.worksheet("scores")
         worksheet_to_update.append_row(score_data)
-        
-        names = get_last_6_scores()[0]
-        points = get_last_6_scores()[1]
 
         check_game_winner()
-
-        print("\n     LATEST SCORES  \n")
-        print(f"--> {points[-1]} - {names[-1]} <--")
-        print(f"    {points[-2]} - {names[-2]}")
-        print(f"    {points[-3]} - {names[-3]}")
-        print(f"    {points[-4]} - {names[-4]}")
-        print(f"    {points[-5]} - {names[-5]}")
-        print(f"    {points[-6]} - {names[-6]}")
-
-        
+        print("Latest scores...")
+        time.sleep(2.5)
+        clear_terminal()
+        print("{:*^80}\n".format(" LATEST SCORES "))
+        get_last_6_scores()
         print("\nTo play again, hit the RUN PROGRAM button.")
