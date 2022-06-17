@@ -14,7 +14,7 @@ Live game at [Rock Paper Scissors Game](https://pp3-rock-paper-scissors.herokuap
 - [Description](#rock-paper-scissors-game)
 - [How to play](#how-to-play)
 - [Features](#features)
-- [Bugs](#bugs)
+- [Testing](#testing)
 - [User Experience](#user-experience)
 - [Deployment](#deployment)
 - [Credits](#credits)
@@ -31,31 +31,64 @@ Rock beats scissors, scissors beats paper, and paper wins against the rock.
 
 ## Features
 
+- The introduction to the game and rules is given.
+- The user is asking to enter a name.
+
 ![introduction](https://user-images.githubusercontent.com/80278757/174295802-a8c63746-8967-4db9-8e64-617c513f298c.png)
+
+- The user was not allowed to leave empty numbers or alphanumeric for the name input. And feedback is provided case it occurs.
+
+![name-validation](https://user-images.githubusercontent.com/80278757/174296125-0046b9bc-2e16-45fb-8c5a-e0a7d147e371.png)
+
+- Random generation of computer and user choice is printed with the round number and the score.
+
 ![round](https://user-images.githubusercontent.com/80278757/174295799-97dd9ec9-84e4-4ba0-953d-619ccf9cda0e.png)
+
+- After the third round, the game results pop on the screen 
+
 ![result](https://user-images.githubusercontent.com/80278757/174295796-2bb16292-8cac-41f5-b392-8a2f973d621e.png)
+
+- The new score is added to a worksheet using a Google API.
+- The latest six results are printed on the screen.
+
 ![latest-scores](https://user-images.githubusercontent.com/80278757/174295804-1f0c8233-b3f3-4d9b-8b02-f427a40f6411.png)
 
-[&#11178; Back to the Table of Contents](#table-of-contents)
-
-
-## Validation
+- The user can enter the numbers 1, 2 or 3 as the instructions ask, and the program will provide feedback if they type something different.
 
 ![choice-validation](https://user-images.githubusercontent.com/80278757/174296122-694dd2b7-f5c8-4bc4-86a9-397e215f7673.png)
-![name-validation](https://user-images.githubusercontent.com/80278757/174296125-0046b9bc-2e16-45fb-8c5a-e0a7d147e371.png)
-![pep8](https://user-images.githubusercontent.com/80278757/174296127-476d7d4e-d71e-43ea-9fa9-eebcbfcbfea0.png)
+
+### Future Features
+
+- Change the order of the latest scores to a decrescent order.
 
 [&#11178; Back to the Table of Contents](#table-of-contents)
 
 
-## Bugs 
+## Testing
 
-No bugs unsolved!
+- No errors or warns are returned when passed through the PEP8 linter.
+- All valid inputs are managed by not accepting strings when numbers are requested or numbers or empty information when strings are expected.
+- Tested in my local terminal and The Code Institute Heroku terminal.
+
+### Bugs
+
+#### Solved bugs
+
+- When the Code Institute terminal was returned a gspreed not determined error, I fixed running the <code>pip3 freeze > requirements.txt</code>.
+
+#### Remaining Bugs 
+
+- No bugs remaining.
 
 [&#11178; Back to the Table of Contents](#table-of-contents)
 
 
 ## User Experience
+
+- I had put the button on the bottom of the terminal and made it more extensive, and changed the button value to "PLAY GAME", but when I tested with users, they got confused with the new layout and tried to click PLAY GAME instead hit enter in the keyboard to enter the inputs. To solve this, I return the original location, size, and value and keep the pink style.
+- The user always presses 3 instead of 0 to play, so I change the input choices to 1, 2, and 3 so the user does not get confusing and does not need to go to the other side of the keyboard when choosing moves. It is also more logical to count from one than zero for most players.
+- Even with the ASCII art at the end showing if the player wins, loses or draws, they feel a need for more feedback confirming this.
+- For those that want to play again, the instruction is given when the game ends.
 
 ![final-layout](https://user-images.githubusercontent.com/80278757/174296283-b88924ca-54d1-44c3-9cc6-3c6dae85580c.png)
 
@@ -87,5 +120,9 @@ Live website at [Rock Paper Scissors Game](https://pp3-rock-paper-scissors.herok
 - Description text and rules from [World Rock Paper Scissors Association](https://wrpsa.com/) website.
 - ASCII art from [ASCII Art Archive](https://www.asciiart.eu) and [patorjk](https://patorjk.com/software/taag/#p=display&f=Graffiti&t=Type%20Something%20).
 - Clear screen code from [Stack Overflow](https://stackoverflow.com/questions/4810537/how-to-clear-the-screen-in-python)
+- Support of documentation on [Python docs](https://docs.python.org/3/library/)
+- W3Schools [Python Tutorial](https://www.w3schools.com/python/default.asp)
+- Love Sandwiches [code](https://github.com/cinthiafontoura/love-sandwiches)
+- Google Sheets and Google APIs.
 
 [&#11178; Back to the Table of Contents](#table-of-contents)
