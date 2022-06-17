@@ -3,7 +3,6 @@ from google.oauth2.service_account import Credentials
 import random
 import time
 import os
-from pprint import pprint
 
 
 SCOPE = [
@@ -192,13 +191,23 @@ against {computer_score} points of the computer.\n")
 
 
         """)
-        print(f"You can solve this playing again! Your socore is \
+        print(f"Oops, it's a draw! Your socore is \
 {user_score} points against {computer_score} points of the computer.")
 
 
 def clear_terminal():
     os.system('cls')  # on windows
     os.system('clear')  # on linux / os x
+
+
+def add_score_to_worksheet():
+    """
+    Add new score to the worksheet
+    """
+    data = [username, user_score]
+    score_data = [i for i in data]
+    worksheet_to_update = SHEET.worksheet("scores")
+    worksheet_to_update.append_row(score_data)
 
 
 def get_last_6_scores():
@@ -219,7 +228,9 @@ def get_last_6_scores():
     latest_scores = {names[i]: points[i] for i in range(len(names))}
     for key, value in latest_scores.items():
         txt = "{:>37}  -  {:<37}"
+        print("{:*^80}\n".format(" LATEST SCORES "))
         print(txt.format(value, key))
+        print("\n{:*^80}\n".format(""))
 
 
 # The game
@@ -229,36 +240,26 @@ user_score = 0
 computer_score = 0
 while game_round <= 4:
     if game_round <= 3:
-        # Take user and computer choices
         user_move = validate_user_move()
-        computer_move = random.randint(0, 2)
+        computer_move = random.randint(1, 3)
         clear_terminal()
         print(f"ROUND: {game_round}\n")
-        # Print choices images
         print_moves("YOU", user_move)
+        print(computer_move)
         print_moves("COMPUTER", computer_move)
-        # Increase one point to the round winner
         user_score += check_round_winner()[0]
         computer_score += check_round_winner()[1]
         print(f"{username} {user_score} x {computer_score} COMPUTER\n")
         game_round += 1
     elif game_round > 3:
         game_round += 1
-        # Print the game result after a delay
-        print("\nGame result...")
+        print("\nGame result...")     
         time.sleep(2.5)
         clear_terminal()
-
-        # Add new score to the worksheet
-        data = [username, user_score]
-        score_data = [i for i in data]
-        worksheet_to_update = SHEET.worksheet("scores")
-        worksheet_to_update.append_row(score_data)
-
+        add_score_to_worksheet()
         check_game_winner()
         print("\nLatest scores...")
         time.sleep(2.5)
         clear_terminal()
-        print("{:*^80}\n".format(" LATEST SCORES "))
         get_last_6_scores()
         print("\nTo play again, hit the RUN PROGRAM button.")
